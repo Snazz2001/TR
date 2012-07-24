@@ -1,0 +1,42 @@
+utilizaionAfterfrozen<-function(x)
+{
+  len<-dim(x)[1];
+  x$DayDiff<-0;
+  pretr<-0;
+  precustomer<-0;
+  preutil<-0;
+  preutils<-c();
+  curutils<-c();
+  ids<-c();
+  trs<-c();
+  for(i in 1:len)
+  {
+    curcustomer<-x[i,"CustomerID"];
+    curtr<-x[i,"TrustRating"];
+    curutil<-x[i,"util"];
+    curid<-x[i,"ProposalID"];
+    bad<-x[i,"Bad"]
+    if(i==1)
+    {
+      print("enter here once");
+    }
+    else
+    {
+      if((curcustomer==precustomer)&(pretr==curtr)&bad==1)
+      {
+        print(i);
+        preutils<-c(preutils,preutil);
+        curutils<-c(curutils,curutil);
+        ids<-c(ids,preid);
+        trs<-c(trs,pretr);
+      }
+    }
+    pretr<-curtr;
+    preutil<-curutil;
+    precustomer<-curcustomer;
+    preid<-curid;
+  }
+  #  print(x$DayDiff)
+  utils<-data.frame(ids,trs,preutils,curutils);
+  return(utils)
+}
